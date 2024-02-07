@@ -46,4 +46,11 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to products_url
   end
+
+  test "functional:should get index" do
+    get products_url
+    assert_response :success
+    assert_select 'nav a', minimum: 4
+    assert_select 'main ul li', 9
+  end
 end
